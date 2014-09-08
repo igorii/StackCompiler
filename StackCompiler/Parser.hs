@@ -55,5 +55,15 @@ parseInt = do
     return (read nn :: Int)
 
 whileParser = whitespace >> arithTerm
-arithTerm   = parens arithExpression 
-           <|> liftM EConst parseInt
+arithTerm = parenATerm <|> atomTerm
+parenATerm = do
+    whitespace 
+    r <- parens arithExpression
+    whitespace
+    return r
+
+atomTerm = do
+    whitespace
+    r <- parseInt
+    whitespace
+    return $ EConst r
