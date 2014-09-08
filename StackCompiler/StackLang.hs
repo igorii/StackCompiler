@@ -5,7 +5,7 @@ module StackCompiler.StackLang where
 import StackCompiler.ArithLang
 
 -- Expressions
-data Instr = IConst Unit
+data Instr = IConst Int
            | IBinOp BinOp
            | IUnaryOp UnaryOp
            deriving Show
@@ -14,7 +14,7 @@ data Instr = IConst Unit
 type Prog  = [Instr]
 
 -- The stack is a basic stack of the atomic type
-type Stack = [Unit]
+type Stack = [Int]
 
 -- Evaluation
 evalInstr i s = case i of

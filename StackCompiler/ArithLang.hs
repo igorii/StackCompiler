@@ -2,13 +2,10 @@
 
 module StackCompiler.ArithLang where
 
--- Atomic arithmetic type
-type Unit = Int
-
 -- Expressions
 data BinOp   = Plus | Times deriving Show
 data UnaryOp = Negate deriving Show
-data Exp     = EConst Unit
+data Exp     = EConst Int
              | EBinOp BinOp Exp Exp
              | EUnaryOp UnaryOp Exp
              deriving Show

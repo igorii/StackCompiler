@@ -1,16 +1,9 @@
 module Main where
 
+import StackCompiler.Parser
 import StackCompiler.StackLang
 import StackCompiler.ArithLang
 import StackCompiler.Compiler
 
 main :: IO ()
-main = putStrLn . show $ evalProg (compile
-    (EBinOp Plus
-            (EBinOp Plus
-                    (EConst 1)
-                    (EConst 8))
-            (EBinOp Times
-                    (EConst 8)
-                    (EUnaryOp Negate (EConst 9)))))
-    []
+main = putStrLn . show $ evalProg (compile . parseString $ "(1+2*3)") []
